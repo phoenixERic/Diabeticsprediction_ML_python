@@ -85,3 +85,17 @@ if (prediction[0] == 0):
   print('The person is not diabetic')
 else:
   print('The person is diabetic')
+
+#using kernel svm 
+# Training the Kernel SVM model on the Training set
+from sklearn.svm import SVC
+classifier = SVC(kernel = 'rbf', random_state = 0)
+classifier.fit(X_train, Y_train)
+
+# Making the Confusion Matrix
+from sklearn.metrics import confusion_matrix, accuracy_score
+y_pred = classifier.predict(X_test)
+cm = confusion_matrix(Y_test, y_pred)
+print(cm)
+accuracy_score(Y_test, y_pred)
+#accuracy=0.7272
